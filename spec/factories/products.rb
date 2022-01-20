@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
-    name { "MyString" }
-    price { 1 }
+    name { Faker::Commerce.product_name }
+    price { rand(10..20) }
   end
 end

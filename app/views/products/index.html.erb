@@ -8,11 +8,10 @@
   <div>
     <h1>Shopping Cart</h1>
     <ol id="cart">
-      <% if @cart %>
-        <% @cart.carts_products.each do |cart_product| %>
-          <li><%= render_cart_product(cart_product) %></li>
-        <% end %>
+      <% @cart.carts_products.each do |cart_product| %>
+        <li><%= render_cart_product(cart_product) %></li>
       <% end %>
     </ol>
+    <p id="total">TOTAL: <%= to_dollars(@cart.total) %></p>
   </div>
 </div>

@@ -7,4 +7,23 @@ class Cart < ApplicationRecord
     carts_product.quantity += 1
     carts_product.save
   end
+
+
+  def total
+    carts_products.inject(0) do |sum, carts_product| 
+      sum + carts_product.quantity * carts_product.product.price
+    end
+  end
+
+  def discounted_rate
+    amount = total
+    return 0.2 if amount > 100
+    return 0.15 if amount > 50
+    return 0.1 if amount > 10
+    nil
+  end
+
+  def discounted_amount
+    total * discounted_rate
+  end
 end

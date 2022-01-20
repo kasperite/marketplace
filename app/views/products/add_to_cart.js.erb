@@ -1,7 +1,10 @@
 var cart = document.getElementById("cart");
+var total = document.getElementById("total");
 cart.innerHTML = "";
+total.innerHTML = "";
 <% @cart.carts_products.each do |cart_product| %>
   var el = document.createElement("li");
   el.innerHTML = "<%= j render_cart_product(cart_product) %>";
   cart.append(el);
 <% end %>
+total.innerHTML = "TOTAL: <%= j to_dollars(@cart.total) %>";
