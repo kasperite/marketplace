@@ -12,6 +12,11 @@
         <li><%= render_cart_product(cart_product) %></li>
       <% end %>
     </ol>
-    <p id="total">TOTAL: <%= to_dollars(@cart.total) %></p>
+    <p id="discount">
+      <% if @calculator.promotion %>
+        <%= @calculator.promotion.description %>
+      <% end %>
+    </p>
+    <p id="total">TOTAL: <%= to_dollars(@calculator.total) %></p>
   </div>
 </div>

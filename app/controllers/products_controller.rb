@@ -3,14 +3,14 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @calculator.run
   end
 
   def add_to_cart
-    if @product = Product.find(params[:product_id])
-      @cart.add(@product)
-    else
-      # something
-    end
+    product = Product.find(params[:product_id])
+    @cart.add(product)
+    @calculator.run
+    
     respond_to do |format|
       format.js
     end
@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   def set_cart
     cookies[:cart_id] ||= SecureRandom.uuid
     @cart = Cart.find_or_create_by(identifier: cookies[:cart_id])
+    @calculator = Calculator.new(@cart)
   end
 
 end

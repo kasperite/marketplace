@@ -1,6 +1,6 @@
 module ProductsHelper
   def to_dollars(price)
-    number_to_currency((price.to_f / 100), :unit => "$")
+    number_to_currency((price.to_f / 100), unit: "$")
   end
 
   def render_cart_product(carts_product)

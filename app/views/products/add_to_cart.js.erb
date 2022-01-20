@@ -1,5 +1,6 @@
 var cart = document.getElementById("cart");
 var total = document.getElementById("total");
+var discount = document.getElementById("discount");
 cart.innerHTML = "";
 total.innerHTML = "";
 <% @cart.carts_products.each do |cart_product| %>
@@ -7,4 +8,9 @@ total.innerHTML = "";
   el.innerHTML = "<%= j render_cart_product(cart_product) %>";
   cart.append(el);
 <% end %>
-total.innerHTML = "TOTAL: <%= j to_dollars(@cart.total) %>";
+<% if @calculator.promotion %>
+  discount.innerHTML = "<%= j @calculator.promotion.description %>";
+<% else %>
+  discount.innerHTML = ""
+<% end %>
+total.innerHTML = "TOTAL: <%= j to_dollars(@calculator.total) %>";

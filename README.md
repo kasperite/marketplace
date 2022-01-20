@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Developement
 
-Things you may want to cover:
+```
+$ bundle install
+$ bundle exec rake db:setup
+$ bundle exec rake products:import
+$ bundle exec rspec spec # run tests
+```
 
-* Ruby version
+Sampled promotions are provided in `db/seeds.rb`.
 
-* System dependencies
+## Design Decisions
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Currency value is stored as integer ie cents to ease numeric calculations.
+2. Promotion or discount is modeled as such that it can be applied either globally at cart level or at product level if needed.
+3. Shopping cart is displayed alongside products listing page. Adding products to cart is done via AJAX.
+4. There is only one cart instance per user. Cart is tracked via cookies and set in products listing page due to point 3 above.
