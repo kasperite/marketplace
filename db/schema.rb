@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_060408) do
+ActiveRecord::Schema.define(version: 2022_01_19_232935) do
+
+  create_table "carts", force: :cascade do |t|
+    t.string "identifier", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["identifier"], name: "index_carts_on_identifier"
+  end
+
+  create_table "carts_products", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 0, null: false
+    t.index ["cart_id"], name: "index_carts_products_on_cart_id"
+    t.index ["product_id"], name: "index_carts_products_on_product_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"

@@ -1,6 +1,5 @@
 <h3><%= product.name %></h3>
 <p><%= to_dollars(product.price) %></p>
 <p>
-  <%= link_to "View", product_path(product), class: "button" %>
-  <a class="button">Add to cart</a>
+  <%= link_to "Add", add_to_cart_products_path(product_id: product.id), method: :post, remote: true, class: "button" %>
 </p>

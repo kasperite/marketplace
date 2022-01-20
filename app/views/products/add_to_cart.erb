@@ -1,0 +1,7 @@
+var cart = document.getElementById("cart");
+cart.innerHTML = "";
+<% @cart.carts_products.each do |cart_product| %>
+  var el = document.createElement("li");
+  el.innerHTML = "<%= j render_cart_product(cart_product) %>";
+  cart.append(el);
+<% end %>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index] do
+    collection do
+      post :add_to_cart
+    end
+  end
   root to: 'products#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

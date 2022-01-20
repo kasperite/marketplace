@@ -1,6 +1,18 @@
-<h1>Products</h1>
-<ul>
-  <% @products.each do |product| %>
-    <%= render product %>
-  <% end %>
-</ul>
+<div class="container">
+  <div>
+    <h1>Products</h1>
+    <ul>
+      <%= render @products %>
+    </ul>
+  </div>
+  <div>
+    <h1>Shopping Cart</h1>
+    <ol id="cart">
+      <% if @cart %>
+        <% @cart.carts_products.each do |cart_product| %>
+          <li><%= render_cart_product(cart_product) %></li>
+        <% end %>
+      <% end %>
+    </ol>
+  </div>
+</div>

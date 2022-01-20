@@ -27,3 +27,8 @@
   margin: 4px 2px;
   cursor: pointer;
 }
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
