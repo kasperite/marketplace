@@ -31,7 +31,7 @@ class Calculator
     @total =  if @promotion.nil?
                 @cart_price
               else
-                @cart_price * (100 - @promotion.discount_rate) / 100
+                ((@cart_price.to_f * (100 - @promotion.discount_rate)) / 100).round
               end
   end
 end
